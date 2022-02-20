@@ -9,22 +9,31 @@ A yokudlela-haccp a yokudlela étterem NÉBIH által kötelezően betartandó, v
 ---
 
 ### Áruátvételről nyilvántartjuk
+- Ellenőrzés azonosítója
+- Ellenőrzés dátuma
+- Áru azonosítója
 - Számla ellenőrzése
 - Szavatosság ellenőrzése
 - Csomagolás ellenőrzése
 
 ### Tárolásról nyilvántartjuk
-- Hűteni kell-e
-- Fogyaszthatósági idők
-- Tárolóterek tisztasága (utolsó takarítás)
+- Ellenőrzés azonosítója
+- Ellenőrzés dátuma
+- Áru azonosítója
+- Hűtés ellenőzése
+- Fogyaszthatósági idők ellenőrzése
+- Csomagolás ellenőrzése
+- Tárolóterek tisztaságának ellenőrzése
 
 ### Hulladékkezelésről nyilvántartjuk
-- Dátum és mennyiség
-- Ürítés megtörtént-t
+- Ellenőrzés azonosítója
+- Ellenőrzés dátuma
+- Keletkezett hulladék mennyisége
+- Ürítés ellenőrzése
 
 ---
 
 ### Üzleti funkciók
 - Funkcionális ellenőrzés területenként
 - Eredmények tárolása
-- Figyelmeztetés
+- Figyelmeztetés küldése, visszajelzés az érintett részleg(ek) felé
