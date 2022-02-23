@@ -49,28 +49,12 @@ public class StorageRepository {
      * @return The desired record.
      * @throws NoSuchElementException Threw when can't get record since non exists with the given id.
      */
-    public StorageControl getRecord(String id) {
+    public StorageControl getRecord(String id) throws NoSuchElementException {
         Optional<StorageControl> optional = storageControlList.stream().filter(x -> x.getId().equals(id)).findFirst();
         if (!optional.isEmpty()) {
             return optional.get();
         } else {
             throw new NoSuchElementException(String.format("No record exists with the given id (%s)", id));
-        }
-    }
-
-    /**
-     * Returns a record based on the given id or throws an exception accordingly.
-     *
-     * @param date The date that is used to search for the desired record.
-     * @return The desired record.
-     * @throws NoSuchElementException Threw when can't get record since non exists with the given id.
-     */
-    public StorageControl getRecord(LocalDate date) {
-        Optional<StorageControl> optional = storageControlList.stream().filter(x -> x.getDate().equals(date)).findFirst();
-        if (!optional.isEmpty()) {
-            return optional.get();
-        } else {
-            throw new NoSuchElementException(String.format("No record exists with the given date (%s)", date));
         }
     }
 

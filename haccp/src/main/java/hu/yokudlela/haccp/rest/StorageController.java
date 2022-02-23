@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InstanceNotFoundException;
+import java.time.LocalDate;
 import java.util.NoSuchElementException;
 
 /**
@@ -36,8 +37,8 @@ public class StorageController {
                     content = { @Content(mediaType = "application/json") })
     })
     @Operation(summary = "Request storage record by id")
-    @GetMapping(path = "/getRecord/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public StorageControl getRecord(
+    @GetMapping(path = "/getRecordById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public StorageControl getRecordById(
             @Parameter(description="Record's id", required = true, example = "0x3FFF000000000000")
             @PathVariable(name = "id", required = true) String id) throws NoSuchElementException {
         return this.storageService.getRecord(id);
@@ -64,7 +65,7 @@ public class StorageController {
                     content = { @Content(mediaType = "application/json") })
     })
     @Operation(summary = "Delete a storage record")
-    @DeleteMapping(path = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "/deleteRecord/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteRecord(
             @Parameter(description = "Storage record's id", required = true, example = "0x3FFF000000000000")
             @PathVariable(name = "id", required = true) String id) throws InstanceNotFoundException {

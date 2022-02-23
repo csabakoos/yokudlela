@@ -58,22 +58,6 @@ public class SupplyRepository {
     }
 
     /**
-     * Returns a record based on the given id or throws an exception accordingly.
-     *
-     * @param date The date that is used to search for the desired record.
-     * @return The desired record.
-     * @throws NoSuchElementException Threw when can't get record since non exists with the given id.
-     */
-    public SupplyControl getRecord(LocalDate date) {
-        Optional<SupplyControl> optional = supplyControlList.stream().filter(x -> x.getDate().equals(date)).findFirst();
-        if (!optional.isEmpty()) {
-            return optional.get();
-        } else {
-            throw new NoSuchElementException(String.format("No record exists with the given date (%s)", date));
-        }
-    }
-
-    /**
      * Removes a record that has the given ID from the collection.
      *
      * @param id The desired records ID to be deleted.
