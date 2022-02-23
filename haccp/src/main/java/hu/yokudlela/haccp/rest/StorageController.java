@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceAlreadyExistsException;
+import javax.management.InstanceNotFoundException;
 import java.util.NoSuchElementException;
 
 /**
@@ -66,7 +67,7 @@ public class StorageController {
     @DeleteMapping(path = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteRecord(
             @Parameter(description = "Storage record's id", required = true, example = "0x3FFF000000000000")
-            @PathVariable(name = "id", required = true) String id) throws InstanceAlreadyExistsException {
+            @PathVariable(name = "id", required = true) String id) throws InstanceNotFoundException {
         this.storageService.deleteRecord(id);
     }
 

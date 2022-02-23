@@ -1,5 +1,6 @@
 package hu.yokudlela.haccp.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -21,7 +22,7 @@ public class StorageControl {
     @Schema(description = "Control ID")
     private String id;
     @Schema(description = "Control Date")
-    private LocalDateTime date;
+    private LocalDate date;
     @Schema(description = "Checked Item")
     private String item;
     @Schema(description = "Packaging status")
@@ -32,7 +33,7 @@ public class StorageControl {
     private boolean warranty;
 
     @Builder
-    public StorageControl(String id, LocalDateTime date, String item, boolean packaging, boolean conditions, boolean warranty) {
+    public StorageControl(String id, LocalDate date, String item, boolean packaging, boolean conditions, boolean warranty) {
         this.id = id;
         this.date = date;
         this.item = item;
