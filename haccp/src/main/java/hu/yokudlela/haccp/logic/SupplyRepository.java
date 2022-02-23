@@ -9,6 +9,7 @@ import java.util.Optional;
 
 /**
  * This class is responsible for handling the data regarding supply management.
+ *
  * @author csabakoos
  */
 public class SupplyRepository {
