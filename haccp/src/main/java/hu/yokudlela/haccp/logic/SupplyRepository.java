@@ -1,7 +1,11 @@
 package hu.yokudlela.haccp.logic;
 
 import hu.yokudlela.haccp.model.SupplyControl;
+import org.springframework.stereotype.Service;
 
+import javax.management.InstanceAlreadyExistsException;
+import javax.management.InstanceNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -12,6 +16,7 @@ import java.util.Optional;
  *
  * @author csabakoos
  */
+@Service
 public class SupplyRepository {
     private final List<SupplyControl> supplyControlList;
 
@@ -26,9 +31,14 @@ public class SupplyRepository {
      * Adds a new record to the collection of the supply management's control records.
      *
      * @param record The new record to be added.
+     * @throws InstanceAlreadyExistsException This is thrown if duplicate record to be added.
      */
-    public void addRecord(SupplyControl record) {
-        this.supplyControlList.add(record);
+    public void addRecord(SupplyControl record) throws InstanceAlreadyExistsException {
+        if (this.supplyControlList.stream().anyMatch(x -> x.getId().equals(record.getId()))) {
+            throw new InstanceAlreadyExistsException("Record already exists with the given id");
+        } else {
+            this.supplyControlList.add(record);
+        }
     }
 
     /**
@@ -36,6 +46,7 @@ public class SupplyRepository {
      *
      * @param id The id that is used to search for the desired record.
      * @return The desired record.
+     * @throws NoSuchElementException Threw when can't get record since non exists with the given id.
      */
     public SupplyControl getRecord(String id) {
         Optional<SupplyControl> optional = supplyControlList.stream().filter(x -> x.getId().equals(id)).findFirst();
@@ -50,8 +61,13 @@ public class SupplyRepository {
      * Removes a record that has the given ID from the collection.
      *
      * @param id The desired records ID to be deleted.
+     * @throws NoSuchElementException Threw when can't delete record since non exists with the given id.
      */
-    public void deleteRecord(String id) {
-        this.supplyControlList.removeIf(x -> x.getId().equals(id));
+    public void deleteRecord(String id) throws NoSuchElementException {
+        if (!this.supplyControlList.stream().anyMatch(x -> x.getId().equals(id))) {
+            throw new NoSuchElementException("Record already exists with the given id");
+        } else {
+            this.supplyControlList.removeIf(x -> x.getId().equals(id));
+        }
     }
 }

@@ -1,7 +1,12 @@
 package hu.yokudlela.haccp.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
@@ -21,8 +26,10 @@ public class SupplyControl {
     @Schema(description = "Control ID")
     private String id;
     @Schema(description = "Control Date")
-    private LocalDateTime date;
+    private LocalDate date;
     @Schema(description = "Checked Item")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private String item;
     @Schema(description = "Invoice")
     private boolean invoice;
@@ -32,7 +39,7 @@ public class SupplyControl {
     private boolean warranty;
 
     @Builder
-    public SupplyControl(String id, LocalDateTime date, String item, boolean invoice, boolean packaging, boolean warranty) {
+    public SupplyControl(String id, LocalDate date, String item, boolean invoice, boolean packaging, boolean warranty) {
         this.id = id;
         this.date = date;
         this.item = item;

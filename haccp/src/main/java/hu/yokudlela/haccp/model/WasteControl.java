@@ -1,7 +1,12 @@
 package hu.yokudlela.haccp.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
@@ -21,14 +26,16 @@ public class WasteControl {
     @Schema(description = "Control ID")
     private String id;
     @Schema(description = "Control Date")
-    private LocalDateTime date;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate date;
     @Schema(description = "Waste Amount")
     private Integer amount;
     @Schema(description = "Dumped Status")
     private boolean dumped;
 
     @Builder
-    public WasteControl(String id, LocalDateTime date, Integer amount, boolean dumped) {
+    public WasteControl(String id, LocalDate date, Integer amount, boolean dumped) {
         this.id = id;
         this.date = date;
         this.amount = amount;
