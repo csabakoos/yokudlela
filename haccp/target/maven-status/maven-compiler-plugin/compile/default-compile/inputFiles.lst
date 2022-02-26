@@ -1,0 +1,11 @@
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/rest/SupplyController.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/rest/WasteController.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/model/SupplyControl.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/logic/SupplyRepository.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/spring/main.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/logic/WasteRepository.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/model/WasteControl.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/model/StorageControl.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/logic/StorageRepository.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/rest/StorageController.java
+/Users/csabakoos/git/yokudlela/haccp/src/main/java/hu/yokudlela/haccp/spring/HaccpApplication.java

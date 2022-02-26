@@ -1,0 +1,15 @@
+hu/yokudlela/haccp/model/StorageControl$StorageControlBuilder.class
+hu/yokudlela/haccp/model/StorageControl.class
+hu/yokudlela/haccp/rest/StorageController.class
+hu/yokudlela/haccp/logic/WasteRepository.class
+hu/yokudlela/haccp/spring/main.class
+hu/yokudlela/haccp/model/WasteControl$WasteControlBuilder.class
+hu/yokudlela/haccp/rest/SupplyController.class
+hu/yokudlela/haccp/spring/HaccpApplication.class
+hu/yokudlela/haccp/model/SupplyControl$SupplyControlBuilder.class
+hu/yokudlela/haccp/model/WasteControl.class
+hu/yokudlela/haccp/rest/WasteController.class
+hu/yokudlela/haccp/logic/StorageRepository.class
+hu/yokudlela/haccp/spring/HaccpApplication$1.class
+hu/yokudlela/haccp/logic/SupplyRepository.class
+hu/yokudlela/haccp/model/SupplyControl.class
