@@ -1,7 +1,7 @@
 version: '1'
 services:
   haccp:
-    image: yokudlela-haccp:latest
+    image: yokudlela/haccp:latest
     ports:
       - '8080:8080'
   db:
@@ -20,7 +20,7 @@ services:
   keycloak:
     image: jboss/keycloak:latest
     ports:
-      - '6080:10020'
+      - '6080:8080'
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=yokudlela
