@@ -13,6 +13,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+
 /**
  * This class represents a single control of an incoming supply.
  *
@@ -23,19 +27,38 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Schema(description = "Supply")
 public class SupplyControl {
+
     @Schema(description = "Control ID")
+    @NotBlank(message = "error.supply.id.notset")
+    @NotNull(message = "error.supply.id.notset")
     private String id;
+
     @Schema(description = "Control Date")
-    private LocalDate date;
-    @Schema(description = "Checked Item")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @NotBlank(message = "error.supply.date.notset")
+    @NotNull(message = "error.supply.date.notset")
+    @PastOrPresent(message = "error.supply.date.future")
+    private LocalDate date;
+
+    @Schema(description = "Checked Item")
+    @NotBlank(message = "error.supply.item.notset")
+    @NotNull(message = "error.supply.item.notset")
     private String item;
+
     @Schema(description = "Invoice")
+    @NotBlank(message = "error.supply.invoice.notset")
+    @NotNull(message = "error.supply.invoice.notset")
     private boolean invoice;
+
     @Schema(description = "Packaging Status")
+    @NotBlank(message = "error.supply.packaging.notset")
+    @NotNull(message = "error.supply.packaging.notset")
     private boolean packaging;
+
     @Schema(description = "Warranty Status")
+    @NotBlank(message = "error.supply.warranty.notset")
+    @NotNull(message = "error.supply.warranty.notset")
     private boolean warranty;
 
     @Builder

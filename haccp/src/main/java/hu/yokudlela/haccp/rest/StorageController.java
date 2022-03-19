@@ -11,10 +11,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InstanceNotFoundException;
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.NoSuchElementException;
 
@@ -25,6 +27,7 @@ import java.util.NoSuchElementException;
  */
 @RestController
 @RequestMapping(path = "/storage")
+@Validated
 public class StorageController {
 
     @Autowired
@@ -80,7 +83,7 @@ public class StorageController {
             }
     )
     @PostMapping(path = "/addRecord", produces = MediaType.APPLICATION_JSON_VALUE)
-    public StorageControl add(@Parameter(description = "The new record",required = true) @RequestBody(required = true) StorageControl record) throws NoSuchElementException, InstanceAlreadyExistsException {
+    public StorageControl add(@Valid @Parameter(description = "The new record",required = true) @RequestBody(required = true) StorageControl record) throws NoSuchElementException, InstanceAlreadyExistsException {
         this.storageService.addRecord(record);
         return record;
     }

@@ -12,10 +12,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InstanceNotFoundException;
+import javax.validation.Valid;
 import java.util.NoSuchElementException;
 
 /**
@@ -25,6 +27,7 @@ import java.util.NoSuchElementException;
  */
 @RestController
 @RequestMapping(path = "/supply")
+@Validated
 public class SupplyController {
 
     @Autowired
@@ -80,7 +83,7 @@ public class SupplyController {
             }
     )
     @PostMapping(path = "/addRecord", produces = MediaType.APPLICATION_JSON_VALUE)
-    public SupplyControl add(@Parameter(description = "The new record",required = true) @RequestBody(required = true) SupplyControl record) throws NoSuchElementException, InstanceAlreadyExistsException {
+    public SupplyControl add(@Valid @Parameter(description = "The new record",required = true) @RequestBody(required = true) SupplyControl record) throws NoSuchElementException, InstanceAlreadyExistsException {
         this.supplyService.addRecord(record);
         return record;
     }

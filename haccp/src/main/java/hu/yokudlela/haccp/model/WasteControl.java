@@ -13,6 +13,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+
 /**
  * This class represents a single control of the storage facility.
  *
@@ -23,15 +27,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Schema(description = "Waste")
 public class WasteControl {
+
     @Schema(description = "Control ID")
+    @NotBlank(message = "error.waste.id.notset")
+    @NotNull(message = "error.waste.id.notset")
     private String id;
+
     @Schema(description = "Control Date")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
+    @NotBlank(message = "error.waste.date.notset")
+    @NotNull(message = "error.waste.date.notset")
+    @PastOrPresent(message = "error.waste.date.future")
     private LocalDate date;
+
     @Schema(description = "Waste Amount")
+    @NotBlank(message = "error.waste.amount.notset")
+    @NotNull(message = "error.waste.amount.notset")
     private Integer amount;
+
     @Schema(description = "Dumped Status")
+    @NotBlank(message = "error.waste.dumped.notset")
+    @NotNull(message = "error.waste.dumped.notset")
     private boolean dumped;
 
     @Builder

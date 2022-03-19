@@ -14,10 +14,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InstanceNotFoundException;
+import javax.validation.Valid;
 import java.util.NoSuchElementException;
 
 /**
@@ -27,6 +29,7 @@ import java.util.NoSuchElementException;
  */
 @RestController
 @RequestMapping(path = "/waste")
+@Validated
 public class WasteController {
 
     @Autowired
@@ -82,7 +85,7 @@ public class WasteController {
             }
     )
     @PostMapping(path = "/addRecord", produces = MediaType.APPLICATION_JSON_VALUE)
-    public WasteControl add(@Parameter(description = "The new record",required = true) @RequestBody(required = true) WasteControl record) throws NoSuchElementException, InstanceAlreadyExistsException {
+    public WasteControl add(@Valid @Parameter(description = "The new record",required = true) @RequestBody(required = true) WasteControl record) throws NoSuchElementException, InstanceAlreadyExistsException {
         this.wasteService.addRecord(record);
         return record;
     }

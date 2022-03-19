@@ -2,6 +2,8 @@ version: '3'
 services:
   haccp:
     image: yokudlela/haccp:latest
+    environment:
+      - KEYCLOAK_AUTH_SERVER_URL=http://172.17.0.2:6080/auth
     ports:
       - '8080:8080'
   mariadb:
