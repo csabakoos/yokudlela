@@ -29,9 +29,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         name = "oauth2",
         description = "KeyCloak Yokudlela",
         flows = @OAuthFlows(
-                implicit = @OAuthFlow(authorizationUrl = "http://172.17.0.1:6080/auth/realms/yokudlela/protocol/openid-connect/auth"
+                implicit = @OAuthFlow(authorizationUrl = "http://172.17.0.2:6080/auth/realms/yokudlela/protocol/openid-connect/auth"
                         + "?client_id=account"
-                        + "&redirect_uri=http://172.17.0.1:8080/haccp/swagger-ui/oauth2-redirect.html"
+                        + "&redirect_uri=http://172.17.0.2:8080/haccp/swagger-ui/oauth2-redirect.html"
                         + "&response_type=code"
                         + "&scope=openid")
         )
@@ -49,13 +49,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         type = SecuritySchemeType.OPENIDCONNECT,
         name = "openid",
         description = "KeyCloak Yokudlela",
-        openIdConnectUrl = "http://172.17.0.1:6080/auth/realms/yokudlela/.well-known/openid-configuration"
+        openIdConnectUrl = "http://172.17.0.2:6080/auth/realms/yokudlela/.well-known/openid-configuration"
 )
 
 @OpenAPIDefinition(
         servers = {
-                @Server(url = "http://172.17.0.1:8080/haccp", description = "local dev"),
-                @Server(url = "https://www.yokudlela.hu:1980//haccp", description = "test") },
+                @Server(url = "http://172.17.0.2:8080/haccp", description = "local dev")
+        },
 
         info = @Info(
                 title = "Yokudlela HACCP API",

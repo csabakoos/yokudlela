@@ -55,8 +55,7 @@
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-spring-boot-2-starter</artifactId>
-            <version>4.0.0.Final</version>
+            <artifactId>keycloak-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>

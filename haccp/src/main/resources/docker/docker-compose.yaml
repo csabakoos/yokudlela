@@ -1,10 +1,10 @@
-version: '1'
+version: '3'
 services:
   haccp:
     image: yokudlela/haccp:latest
     ports:
       - '8080:8080'
-  db:
+  mariadb:
     image: mariadb:latest
     environment:
       PROXY_ADDRESS_FORWARDING: 'true'
@@ -18,20 +18,20 @@ services:
     volumes:
       - ${PWD}/../../disks/sql:/var/lib/mysql
   keycloak:
-    image: jboss/keycloak:latest
+    image: sleighzy/keycloak:latest
     ports:
       - '6080:8080'
     environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=yokudlela
       - DB_VENDOR=mariadb
+      - DB_ADDR=mariadb
+      - DB_DATABASE=keycloak
       - DB_USER=yokudlela
       - DB_PASSWORD=yokudlela
-      - DB_ADDR=db
-      - DB_DATABASE=keycloak
       - DB_PORT=3306
+      - KEYCLOAK_USER=admina
+      - KEYCLOAK_PASSWORD=admina
       - KEYCLOAK_IMPORT=/tmp/example-realm.json
     volumes:
       - ${PWD}/realm-export.json:/tmp/example-realm.json
     depends_on:
-      - db
+      - mariadb
