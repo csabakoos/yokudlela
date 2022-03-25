@@ -1,8 +1,10 @@
 package hu.yokudlela.haccp.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -13,6 +15,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -26,11 +29,17 @@ import javax.validation.constraints.PastOrPresent;
 @EqualsAndHashCode()
 @NoArgsConstructor
 @Schema(description = "Waste")
-public class WasteControl {
+@Entity
+@javax.persistence.Table(name = "rwaste")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class WasteControl implements Serializable {
 
     @Schema(description = "Control ID")
     @NotBlank(message = "error.waste.id.notset")
     @NotNull(message = "error.waste.id.notset")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
     private String id;
 
     @Schema(description = "Control Date")

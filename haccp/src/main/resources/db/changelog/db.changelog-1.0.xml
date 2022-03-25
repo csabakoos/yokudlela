@@ -1,0 +1,54 @@
+<db:databaseChangeLog
+        xmlns:db="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <db:changeSet id="create-table-from-object" author="csabakoos">
+        <db:createTable tableName="rstorage">
+            <db:column name="id" type="varchar(255)"></db:column>
+            <db:column name="date" type="timestamp"  ></db:column>
+            <db:column name="item" type="varchar(255)"  ></db:column>
+            <db:column name="packaging" type="boolean"  ></db:column>
+            <db:column name="conditions" type="boolean"  ></db:column>
+            <db:column name="warranty" type="boolean"  ></db:column>
+        </db:createTable>
+        <db:createIndex tableName="rstorage" indexName="rstorage-id">
+            <db:column name="id"></db:column>
+        </db:createIndex>
+        <db:createTable tableName="rsupply">
+            <db:column name="id" type="varchar(255)"></db:column>
+            <db:column name="date" type="timestamp"  ></db:column>
+            <db:column name="item" type="varchar(255)"  ></db:column>
+            <db:column name="packaging" type="boolean"  ></db:column>
+            <db:column name="conditions" type="boolean"  ></db:column>
+            <db:column name="warranty" type="boolean"  ></db:column>
+        </db:createTable>
+        <db:createIndex tableName="rsupply" indexName="rsupply-id">
+            <db:column name="id"></db:column>
+        </db:createIndex>
+        <db:createTable tableName="rwaste">
+            <db:column name="id" type="varchar(255)"></db:column>
+            <db:column name="date" type="timestamp"  ></db:column>
+            <db:column name="amount" type="int"  ></db:column>
+            <db:column name="dumped" type="boolean"  ></db:column>
+        </db:createTable>
+        <db:createIndex tableName="rwaste" indexName="rwaste-id">
+            <db:column name="id"></db:column>
+        </db:createIndex>
+    </db:changeSet>
+
+    <db:changeSet id="hibernate_sequences" author="csabakoos">
+        <db:createTable tableName="hibernate_sequences">
+            <db:column name="sequence_name" type="varchar(255)"  ></db:column>
+            <db:column name="next_val" type="BIGINT"  ></db:column>
+        </db:createTable>
+    </db:changeSet>
+
+    <db:changeSet id="init-data" author="csabakoos">
+        <db:insert tableName="hibernate_sequences">
+            <db:column name="sequence_name" value="default"></db:column>
+            <db:column name="next_val" value="1"></db:column>
+        </db:insert>
+    </db:changeSet>
+
+</db:databaseChangeLog>
