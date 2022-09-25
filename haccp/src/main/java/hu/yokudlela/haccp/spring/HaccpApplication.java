@@ -52,24 +52,24 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         type = SecuritySchemeType.OPENIDCONNECT,
         name = "openid",
         description = "KeyCloak Yokudlela",
-        openIdConnectUrl = "http://172.17.0.2:6080/auth/realms/yokudlela/.well-known/openid-configuration"
+        openIdConnectUrl = "http://localhost:6080/auth/realms/yokudlela/.well-known/openid-configuration"
 )
 
 @OpenAPIDefinition(
         servers = {
-                @Server(url = "http://172.17.0.2:8080/haccp", description = "local dev")
+                @Server(url = "http://localhost:8080/haccp", description = "local dev")
         },
 
         info = @Info(
                 title = "Yokudlela HACCP API",
                 version = "v1",
-                description = "description = \"Yokudlela HACCP API for Graphical User Interface .",
+                description = "Yokudlela HACCP API for Graphical User Interface",
                 license = @License(
                         name = "",
                         url = ""),
                 contact = @Contact(
                         url = "",
-                        name = "Csaba Koós", email = "csaba.koos@stud.uno-obuda.hu")))
+                        name = "Csaba Koós", email = "csaba.koos@stud.uni-obuda.hu")))
 
 @Configuration
 @EnableWebMvc
